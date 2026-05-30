@@ -1,2 +1,2 @@
 - Use this Visual Studio solution and project to build the EnsoniqFS repo: https://github.com/thoralt/ensoniqfs
-- A prebuilt 32 bit plugin is in the zip file ready for installation into Total Commander.
+- A prebuilt 32 bit plugin is in the zip file ready for installation into Total Commander 32 bit.
