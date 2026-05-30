@@ -1,0 +1,25 @@
+; EnsoniqFS.def
+; Module definition file for EnsoniqFS.wfx
+; Exports all Total Commander filesystem plugin entry points.
+;
+; The plugin DLL is renamed to .wfx after the build (see the
+; TargetExt setting in the .vcxproj, or rename manually).
+
+LIBRARY     EnsoniqFS
+
+EXPORTS
+    FsInit
+    FsFindFirst
+    FsFindNext
+    FsFindClose
+    FsGetDefRootName
+    FsGetFile
+    FsMkDir
+    FsRemoveDir
+    FsDeleteFile
+    FsPutFile
+    FsStatusInfo
+    FsRenMovFile
+    FsExecuteFile
+    FsExtractCustomIcon
+    FsSetDefaultParams

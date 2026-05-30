@@ -1,0 +1,130 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\kevinhouser\\Documents\\GitHub\\EnsoniqFS_VS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kevinhouser\\Documents\\GitHub\\ensoniqfs\\disk.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kevinhouser\\Documents\\GitHub\\ensoniqfs\\EnsoniqFS.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kevinhouser\\Documents\\GitHub\\ensoniqfs\\disk.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kevinhouser\\Documents\\GitHub\\ENSONIQFS\\ENSONIQFS.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD76BC94-272F-421A-B8A6-F79AB87BF6F2}|EnsoniqFS\\EnsoniqFS.vcxproj|C:\\Users\\kevinhouser\\Documents\\GitHub\\EnsoniqFS_VS\\obj\\x64\\Debug\\EnsoniqFS\\EnsoniqFS_clean.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AD76BC94-272F-421A-B8A6-F79AB87BF6F2}|EnsoniqFS\\EnsoniqFS.vcxproj|solutionrelative:obj\\x64\\Debug\\EnsoniqFS\\EnsoniqFS_clean.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD76BC94-272F-421A-B8A6-F79AB87BF6F2}|EnsoniqFS\\EnsoniqFS.vcxproj|C:\\Users\\kevinhouser\\Documents\\GitHub\\ensoniqfs\\fsplugin.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EnsoniqFS_clean.c",
+              "DocumentMoniker": "C:\\Users\\kevinhouser\\Documents\\GitHub\\EnsoniqFS_VS\\obj\\x64\\Debug\\EnsoniqFS\\EnsoniqFS_clean.c",
+              "RelativeDocumentMoniker": "obj\\x64\\Debug\\EnsoniqFS\\EnsoniqFS_clean.c",
+              "ToolTip": "C:\\Users\\kevinhouser\\Documents\\GitHub\\EnsoniqFS_VS\\obj\\x64\\Debug\\EnsoniqFS\\EnsoniqFS_clean.c",
+              "RelativeToolTip": "obj\\x64\\Debug\\EnsoniqFS\\EnsoniqFS_clean.c",
+              "ViewState": "AgIAAGUOAAAAAAAAAAAmwGwOAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-05-30T06:59:54.021Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Microsoft.CppCommon.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets",
+              "ViewState": "AgIAANMKAAAAAAAAAAAuwOAKAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-05-30T06:52:01.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EnsoniqFS.h",
+              "DocumentMoniker": "C:\\Users\\kevinhouser\\Documents\\GitHub\\EnsoniqFS_VS\\ensoniqfs\\EnsoniqFS.h",
+              "RelativeDocumentMoniker": "ensoniqfs\\EnsoniqFS.h",
+              "ToolTip": "C:\\Users\\kevinhouser\\Documents\\GitHub\\EnsoniqFS_VS\\ensoniqfs\\EnsoniqFS.h",
+              "RelativeToolTip": "ensoniqfs\\EnsoniqFS.h",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAmwHYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-30T06:51:46.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "fsplugin.h",
+              "DocumentMoniker": "C:\\Users\\kevinhouser\\Documents\\GitHub\\ensoniqfs\\fsplugin.h",
+              "RelativeDocumentMoniker": "..\\ensoniqfs\\fsplugin.h",
+              "ToolTip": "C:\\Users\\kevinhouser\\Documents\\GitHub\\ensoniqfs\\fsplugin.h",
+              "RelativeToolTip": "..\\ensoniqfs\\fsplugin.h",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAEwGgAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-30T06:41:30.031Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EnsoniqFS.c",
+              "DocumentMoniker": "C:\\Users\\kevinhouser\\Documents\\GitHub\\ensoniqfs\\EnsoniqFS.c",
+              "RelativeDocumentMoniker": "..\\ensoniqfs\\EnsoniqFS.c",
+              "ToolTip": "C:\\Users\\kevinhouser\\Documents\\GitHub\\ensoniqfs\\EnsoniqFS.c",
+              "RelativeToolTip": "..\\ensoniqfs\\EnsoniqFS.c",
+              "ViewState": "AgIAAGkFAAAAAAAAAAAEwG8FAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-05-30T06:49:23.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "disk.h",
+              "DocumentMoniker": "C:\\Users\\kevinhouser\\Documents\\GitHub\\ensoniqfs\\disk.h",
+              "RelativeDocumentMoniker": "..\\ensoniqfs\\disk.h",
+              "ToolTip": "C:\\Users\\kevinhouser\\Documents\\GitHub\\ensoniqfs\\disk.h",
+              "RelativeToolTip": "..\\ensoniqfs\\disk.h",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAUwE8AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-30T06:49:23.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "disk.c",
+              "DocumentMoniker": "C:\\Users\\kevinhouser\\Documents\\GitHub\\ensoniqfs\\disk.c",
+              "RelativeDocumentMoniker": "..\\ensoniqfs\\disk.c",
+              "ToolTip": "C:\\Users\\kevinhouser\\Documents\\GitHub\\ensoniqfs\\disk.c",
+              "RelativeToolTip": "..\\ensoniqfs\\disk.c",
+              "ViewState": "AgIAAJ0DAAAAAAAAAAAmwKUDAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-05-30T07:08:47.654Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

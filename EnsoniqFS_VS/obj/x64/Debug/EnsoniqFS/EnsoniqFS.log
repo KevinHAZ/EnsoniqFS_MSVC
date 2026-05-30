@@ -1,0 +1,16 @@
+﻿  Patching repo sources for MSVC compatibility
+  EnsoniqFS_clean.c
+C:\Users\kevinhouser\Documents\GitHub\EnsoniqFS_VS\obj\x64\Debug\EnsoniqFS\EnsoniqFS_clean.c(3693,17): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+C:\Users\kevinhouser\Documents\GitHub\EnsoniqFS_VS\obj\x64\Debug\EnsoniqFS\EnsoniqFS_clean.c(2860,1): warning C4700: uninitialized local variable 'Handle' used
+  disk_clean.c
+  bank.c
+  cache.c
+  choosediskdlg.c
+  ini.c
+  log.c
+  optionsdlg.c
+  progressdlg.c
+  Generating Code...
+     Creating library C:\Users\kevinhouser\Documents\GitHub\EnsoniqFS_VS\bin\x64\Debug\EnsoniqFS.lib and object C:\Users\kevinhouser\Documents\GitHub\EnsoniqFS_VS\bin\x64\Debug\EnsoniqFS.exp
+EnsoniqFS.exp : warning LNK4070: /OUT:EnsoniqFS.dll directive in .EXP differs from output filename 'C:\Users\kevinhouser\Documents\GitHub\EnsoniqFS_VS\bin\x64\Debug\EnsoniqFS.wfx'; ignoring directive
+  EnsoniqFS.vcxproj -> C:\Users\kevinhouser\Documents\GitHub\EnsoniqFS_VS\bin\x64\Debug\EnsoniqFS.wfx

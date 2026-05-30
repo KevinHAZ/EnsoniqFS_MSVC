@@ -1,0 +1,6 @@
+[plugininstall]
+description=Ensoniq filesystem plugin
+type=wfx
+file=EnsoniqFS.wfx
+file=ETools.exe
+defaultdir=EnsoniqFS

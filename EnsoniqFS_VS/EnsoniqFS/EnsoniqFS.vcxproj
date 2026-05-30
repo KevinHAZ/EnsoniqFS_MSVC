@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!--
+    EnsoniqFS.vcxproj — Visual Studio 2019/2022 project for EnsoniqFS.wfx
+    Source repo: https://github.com/thoralt/ensoniqfs
+
+    FOLDER LAYOUT (both folders must be siblings):
+        <parent>\
+          EnsoniqFS_VS\
+            EnsoniqFS.sln
+            EnsoniqFS\
+              EnsoniqFS.vcxproj
+              EnsoniqFS.def
+              msvc_compat.h
+              disk.h          <- patched (pre-build copies into repo folder)
+              EnsoniqFS.h     <- patched (pre-build copies into repo folder)
+          ensoniqfs\          <- git clone of the repo
+
+    PRE-BUILD FIXES (no permanent repo changes required):
+      1. disk.h / EnsoniqFS.h are copied into the repo folder so that
+         relative #include "..." picks up the patched versions.
+         Originals are backed up as *.orig on first run.
+      2. EnsoniqFS.c: #warning lines stripped -> IntDir\EnsoniqFS_clean.c
+      3. disk.c: ScanDevices return type fixed -> IntDir\disk_clean.c
+         Original: DLLEXPORT DISK __stdcall *ScanDevices(...)
+         Fixed:    DLLEXPORT DISK* __stdcall ScanDevices(...)
+  -->
+
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{AD76BC94-272F-421A-B8A6-F79AB87BF6F2}</ProjectGuid>
+    <RootNamespace>EnsoniqFS</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <SourceRoot>$(SolutionDir)..\ensoniqfs\</SourceRoot>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+
+  <PropertyGroup>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>EnsoniqFS</TargetName>
+    <TargetExt>.wfx</TargetExt>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <PreBuildEvent>
+      <!--
+        Single-line PowerShell command. Steps:
+        1. Create IntDir.
+        2. Copy patched disk.h and EnsoniqFS.h into repo folder (backing up originals).
+        3. Fix disk.c: rewrite "DISK __stdcall *ScanDevices" to "DISK* __stdcall ScanDevices".
+        4. Fix EnsoniqFS.c: remove #warning lines.
+      -->
+      <Command>powershell -NoProfile -Command "$r='$(SourceRoot)'; $p='$(ProjectDir)'; $i='$(IntDir)'; md -Force $i | Out-Null; if (-not (Test-Path ($r+'disk.h.orig'))) { Copy-Item ($r+'disk.h') ($r+'disk.h.orig') }; Copy-Item ($p+'disk.h') ($r+'disk.h') -Force; if (-not (Test-Path ($r+'EnsoniqFS.h.orig'))) { Copy-Item ($r+'EnsoniqFS.h') ($r+'EnsoniqFS.h.orig') }; Copy-Item ($p+'EnsoniqFS.h') ($r+'EnsoniqFS.h') -Force; (Get-Content ($r+'disk.c')) -replace 'DISK\s+__stdcall\s+\*\s*ScanDevices','DISK* __stdcall ScanDevices' | Set-Content ($i+'disk_clean.c'); (Get-Content ($r+'EnsoniqFS.c')) -replace '(?m)^\s*#\s*warning\b.*$','/* #warning removed for MSVC */' | Set-Content ($i+'EnsoniqFS_clean.c')"</Command>
+      <Message>Patching repo sources for MSVC compatibility</Message>
+    </PreBuildEvent>
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>false</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SourceRoot);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>msvc_compat.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <DisableSpecificWarnings>4996;4018;4244;4267;4311;4302;4047</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>kernel32.lib;user32.lib;advapi32.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(ProjectDir)EnsoniqFS.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link><GenerateDebugInformation>true</GenerateDebugInformation></Link>
+  </ItemDefinitionGroup>
+
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link><GenerateDebugInformation>true</GenerateDebugInformation></Link>
+  </ItemDefinitionGroup>
+
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <!-- Source files -->
+  <ItemGroup>
+    <!-- Pre-build-generated cleaned copies -->
+    <ClCompile Include="$(IntDir)EnsoniqFS_clean.c">
+      <ObjectFileName>$(IntDir)EnsoniqFS.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="$(IntDir)disk_clean.c">
+      <ObjectFileName>$(IntDir)disk.obj</ObjectFileName>
+    </ClCompile>
+    <!-- Unmodified repo sources -->
+    <ClCompile Include="$(SourceRoot)bank.c" />
+    <ClCompile Include="$(SourceRoot)cache.c" />
+    <ClCompile Include="$(SourceRoot)choosediskdlg.c" />
+    <ClCompile Include="$(SourceRoot)ini.c" />
+    <ClCompile Include="$(SourceRoot)log.c" />
+    <ClCompile Include="$(SourceRoot)optionsdlg.c" />
+    <ClCompile Include="$(SourceRoot)progressdlg.c" />
+  </ItemGroup>
+
+  <!-- Header files -->
+  <ItemGroup>
+    <ClInclude Include="$(ProjectDir)msvc_compat.h" />
+    <ClInclude Include="$(ProjectDir)disk.h" />
+    <ClInclude Include="$(ProjectDir)EnsoniqFS.h" />
+    <ClInclude Include="$(SourceRoot)bank.h" />
+    <ClInclude Include="$(SourceRoot)cache.h" />
+    <ClInclude Include="$(SourceRoot)choosediskdlg.h" />
+    <ClInclude Include="$(SourceRoot)diskstructure.h" />
+    <ClInclude Include="$(SourceRoot)error.h" />
+    <ClInclude Include="$(SourceRoot)fsplugin.h" />
+    <ClInclude Include="$(SourceRoot)ini.h" />
+    <ClInclude Include="$(SourceRoot)log.h" />
+    <ClInclude Include="$(SourceRoot)OmniFlop.h" />
+    <ClInclude Include="$(SourceRoot)optionsdlg.h" />
+    <ClInclude Include="$(SourceRoot)progressdlg.h" />
+    <ClInclude Include="$(SourceRoot)resource.h" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ResourceCompile Include="$(SourceRoot)progressdlg.rc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(ProjectDir)EnsoniqFS.def" />
+  </ItemGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+
+</Project>
